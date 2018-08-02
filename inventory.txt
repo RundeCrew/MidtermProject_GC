@@ -1,0 +1,4 @@
+Bag_of_Chips	9.99
+Two_Hearted	10.99
+Avocado_Toast 12.99
+Raw_Brie_Piece	12.50

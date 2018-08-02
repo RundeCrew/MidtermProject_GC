@@ -34,18 +34,13 @@ package midterm;
 			String[] parts = line.split("\t");
 			Inventory inventory = new Inventory();
 			inventory.setProductName(parts[0]);
-			inventory.(Double.parseDouble(setPrice(parts[1]));
-			System.out.println("Printing line" + line);
-			
-			inventory.setProductName(line);
+			inventory.setPrice(Double.parseDouble(parts[1]));
+			// System.out.println("Product and price (from inventory)" + line);
 			return inventory;
 		}
-		private static String convertItemToLine(CountryInventory country) {
-			// System.out.println(country.getCountryName());
-			String newCountry = null;
-			newCountry = (country.getCountryName());
-			// System.out.println(newCountry);
-			return newCountry;
+		 private static String convertItemToLine(Inventory inventory) {
+			 return String.format("%\t%s", inventory.getProductName(), inventory.getPrice());
+		 }
 			
 			// return String output = (country.getCountryName());
 			
@@ -53,10 +48,10 @@ package midterm;
 			
 			// return String.format("%s\t%d", player.getName(), player.getJersey());
 			// return String.format("%s", country.getCountryName());
-		}
+		//}
 			
-		public static List<Country> readFile() {
-			List<Country> items = new ArrayList<>();
+		public static List<Inventory> readFile() {
+			List<Inventory> items = new ArrayList<>();
 			
 			try (
 				// Open/prepare the resources in the try resources block
@@ -68,7 +63,7 @@ package midterm;
 					// read each line as a string
 					String line = fileScanner.nextLine();
 					// then convert it to an object
-					items.add( convertLineToItem(line) );
+					 items.add( convertLineToItem(line) );
 				}
 				fileInputStream.close();
 				fileScanner.close();
@@ -88,28 +83,26 @@ package midterm;
 			// Finally return the array of items.
 			return items;
 		}
-		public static void appendLine(Country item) {
-			// convert player object to a string line of text to be written to the file
-			String line = convertItemToLine(item);
-			// System.out.println(line);
-			
-			// String line = item.getCountryName();
-			try (
-				// The `true` here tells the FileOutputStream to append to the file rather than overwriting it
-				FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME, true);
-				PrintWriter fileWriter = new PrintWriter(fileOutputStream);
-			) {
-				// write to the file
-				fileWriter.println(line);
-				fileOutputStream.close();
-				fileWriter.close();
-			} catch (IOException e) {
-				// If something else crazy goes wrong, print out the error.
-				System.err.println("Something unexpected happended.");
-				e.printStackTrace();
-			}
-		}
+//		public static void appendLine(Country item) {
+//			// convert player object to a string line of text to be written to the file
+//			String line = convertItemToLine(item);
+//			// System.out.println(line);
+//			
+//			// String line = item.getCountryName();
+//			try (
+//				// The `true` here tells the FileOutputStream to append to the file rather than overwriting it
+//				FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME, true);
+//				PrintWriter fileWriter = new PrintWriter(fileOutputStream);
+//			) {
+//				// write to the file
+//				fileWriter.println(line);
+//				fileOutputStream.close();
+//				fileWriter.close();
+//			} catch (IOException e) {
+//				// If something else crazy goes wrong, print out the error.
+//				System.err.println("Something unexpected happended.");
+//				e.printStackTrace();
+//			}
+//		}
 		
 	}
-
-}
