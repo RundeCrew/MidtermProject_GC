@@ -5,12 +5,12 @@ public class Story {
 	public static void main(String[] args) {
 		
 		System.out.println("Once upon a time in the mystical land of Shangrila "
-				+ "there dwelt an immortal named Kai-Yun and his trusty band of ninja monkeys."
+				+ "there dwelt an immortal named Kai-Yun and his trusty band of students."
 				+ "On the second Saturday, Kai-Yun headed out to gather berries."
 				+ "Because he felt the urge to make a pie for his party that night."
-				+ "Kai-Yun had a birthday that day and wanted to celebrate with all the ninjas."
+				+ "Kai-Yun had a birthday that day and wanted to celebrate with all the students."
 				+ "He forgot to send out invitations though so he had to slack everyone before he headed out!"
-				+ "Except he then remembered that one of the ninja monkeys was allergic to eggs and he decided to make something else. Probably a salad.");
+				+ "Except he then remembered that one of the students was allergic to eggs and he decided to make something else. Probably a salad.");
 				
 
 	}
