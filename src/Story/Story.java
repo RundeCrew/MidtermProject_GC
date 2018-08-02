@@ -12,6 +12,7 @@ public class Story {
 				+ "\nHe forgot to send out invitations though so he had to slack everyone before he headed out!"
 				+ "\nExcept he then remembered that one of the ninja monkeys was allergic to eggs."
 				+ "\n\n\t\"Uuuugh!\" said Kai-Yun.  \"I hate vegan monkeys!!\"");
+		System.out.println("Today is the day of the party!! Can not wait!!!");
 
 	}
 }
