@@ -1,4 +1,6 @@
-Bag_of_Chips	9.99
-Two_Hearted	10.99
-Avocado_Toast 12.99
-Raw_Brie_Piece	12.50
+Detroit Made Chips	9.89
+Two Hearted Ale	10.99
+Hob Nob Pinot Noir	14.99
+Avocado Toast	12.99
+Double Brie	13.99
+M52 IPA	13.99
