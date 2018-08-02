@@ -6,12 +6,12 @@ public class Story {
 		
 		System.out.println("Once upon a time in the mystical land of Downtown Detroit "
 				+ "there dwelt an immortal named Kai-Yun and his trusty band of students."
-				+ "On the second Saturday, Kai-Yun headed out to gather berries."
-				+ "Because he felt the urge to make a pie for his party that night."
-				+ "Kai-Yun had a birthday that day and wanted to celebrate with all the students."
-				+ "He forgot to send out invitations though so he had to slack everyone before he headed out!"
-				+ "Except he then remembered that one of the ninja monkeys was allergic to eggs."
-				+ "\"Uuuugh!\" said Kai-Yun.  \"I hate vegan monkeys!!\"");
+				+ "\nOn the second Saturday, Kai-Yun headed out to gather berries."
+				+ "\nBecause he felt the urge to make a pie for his party that night."
+				+ "\nKai-Yun had a birthday that day and wanted to celebrate with all the students."
+				+ "\nHe forgot to send out invitations though so he had to slack everyone before he headed out!"
+				+ "\nExcept he then remembered that one of the ninja monkeys was allergic to eggs."
+				+ "\n\n\t\"Uuuugh!\" said Kai-Yun.  \"I hate vegan monkeys!!\"");
 
 	}
 }
