@@ -9,7 +9,9 @@ public class Story {
 				+ "On the second Saturday, Kai-Yun headed out to gather berries."
 				+ "Because he felt the urge to make a pie for his party that night."
 				+ "Kai-Yun had a birthday that day and wanted to celebrate with all the ninjas."
-				+ "He forgot to send out invitations though so he had to slack everyone before he headed out!");
+				+ "He forgot to send out invitations though so he had to slack everyone before he headed out!"
+				+ "Except he then remembered that one of the ninja monkeys was allergic to eggs and he decided to make something else. Probably a salad.");
+				
 
 	}
 }
