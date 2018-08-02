@@ -30,14 +30,15 @@ public class SVKPartyStoreApp {
 		// System.out.println("Thanks " + guestName + ", today our selection of gourmet products is:");
 		int itemSKU = 0;
 		
-		int i = 1;
-		System.out.println("SKU\tProduct\t\t\tPrice");
-		System.out.println("===\t=======\t\t\t======");
-		
-		for (Inventory inv : inventory) {
-			System.out.println(i++ + ".\t" + inv.getProductName() + "\t\t\t" + inv.getPrice());
-		}
-		
+//		int i = 1;
+//		System.out.println("SKU\tProduct\t\t\tPrice");
+//		System.out.println("===\t=======\t\t\t======");
+//		
+//		for (Inventory inv : inventory) {
+//			System.out.println(i++ + ".\t" + inv.getProductName() + "\t\t\t" + inv.getPrice());
+//		}
+		printInventory();
+			
 //		do {
 //			System.out.println("What would you like to add to your shopping cart (enter SKU number)?");
 //			// itemSKU = shoppingcart method
@@ -53,11 +54,19 @@ public class SVKPartyStoreApp {
 //			
 //		} while (cont.equals('y'));
 			
-		
+		// receipt - email option
+		// thank you!!
 	}
 	
-	public static void printInventory(Inventory inventory) {
+	public static void printInventory() {
+		List<Inventory> inventoryList = SVKUtilFile.readFile();
+		int i = 1;
+		System.out.println("SKU\tProduct\t\t\tPrice");
+		System.out.println("===\t=======\t\t\t======");
 		
+		for (Inventory inv : inventoryList) {
+			System.out.println(i++ + ".\t" + inv.getProductName() + "\t\t\t" + inv.getPrice());
+		}
 		return;
 	}
 	
