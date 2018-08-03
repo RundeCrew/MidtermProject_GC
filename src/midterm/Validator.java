@@ -53,18 +53,26 @@ public class Validator {
 			return getInt(scnr, prompt);
 		}
 	}
-	public static int getQuantityInt(Scanner scnr, String prompt, Product inventory) {
-		// This approach uses exception handling.
-		System.out.print(prompt);
-		try {
-			int num = scnr.nextInt();
-			scnr.nextLine();
-			return num;
-		} catch (InputMismatchException e)  {
-			System.out.println("We're sorry but we only have " + inventory.getStock() + ", please enter a valid quantity.");
-			scnr.nextLine();
-			return getInt(scnr, prompt);
-		}
+	public static int getQuantityInt(Scanner scnr, String prompt, int min, int max, Product menu) {
+		boolean isValid = false;
+		int number;
+		System.out.println(prompt);
+		do {
+			number = getInt(scnr, prompt);
+			if (number < min) {
+				isValid = false;
+				System.out.println("The number must be at least " + min);
+			} else if (number > max) {
+				isValid = false;
+				System.out.println("We're sorry but we only have " + menu.getStock() + ", please enter a valid quantity.");
+
+			} else {
+				isValid = true;
+			}
+			
+		} while (!isValid);
+		return number;	
+		
 	}
 
 	/**

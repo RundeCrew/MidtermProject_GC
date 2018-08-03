@@ -18,10 +18,11 @@ package midterm;
 		
 		// Modify this method as necessary to convert a line of text from the file to a new item instance
 		private static Product convertLineToItem(String line) {
-			String[] parts = line.split("\t");
+			String[] parts = line.split("~~~");
 			Product inventory = new Product();
 			inventory.setProductName(parts[0]);
 			inventory.setPrice(Double.parseDouble(parts[1]));
+			inventory.setStock(Integer.parseInt(parts[2]));
 			return inventory;
 		}
 		

@@ -12,13 +12,13 @@ public class ShoppingCart {
 //		int userChoice;
 //		boolean inputIsValid = false;
 //			if (Validator.getInt(scnr,"Please select the item number that you would like to add to your cart.", 1,12)) { 
-//				int quantity = Validator.getQuantityInt(scnr,"How many would you like?", inventory);
+//				
 //				break; // Break the loop
 //			} else {
 //				System.out.println("We don't offer this item, please enter a new option.");
 //				continue;
 //			}
-		int userChoice = Validator.getInt(scnr,"Please select the item number that you would like to add to your cart.", 1, menu.size());
+	
 		return userChoice;
 	}
 	

@@ -1,6 +1,6 @@
-Detroit Made Chips	9.89
-Two Hearted Ale	10.99
-Hob Nob Pinot Noir	14.99
-Avocado Toast	12.99
-Double Brie	13.99
-M52 IPA	13.99
+Detroit Made Chips~~~9.89~~~15
+Two Hearted Ale~~~10.99~~~30
+Hob Nob Pinot Noir~~~14.99~~~4
+Avocado Toast~~~12.99~~~1
+Double Brie~~~13.99~~~5
+M52 IPA~~~13.99~~~10

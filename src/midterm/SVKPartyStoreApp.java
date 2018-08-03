@@ -1,5 +1,6 @@
 package midterm;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class SVKPartyStoreApp {
 		
 		Scanner scnr = new Scanner(System.in);
 		SVKUtilFile.createBlankFile("inventory.txt");
+		
 		
 		List<Product> menu = SVKUtilFile.readFile();
 		String cont = null;
@@ -35,13 +37,22 @@ public class SVKPartyStoreApp {
 //		
 //		}
 		printInventory();
-			
+		int userChoice = Validator.getInt(scnr,"Please select the item number that you would like to add to your cart.", 1, menu.size());
+		System.out.println(userChoice);
+		int availStock = 0;
+		for ( unitStock : menu );
+		
+		// int availStock = menu.getStock(userChoice);
+		int availStock = menu.getStock[userChoice - 1];
+		
+		
+		// int quantity = Validator.getQuantityInt(scnr, "How many would you like?", 1, availStock, menu);
 //		do {
 //			System.out.println("What would you like to add to your shopping cart (enter SKU number)?");
 //			// itemSKU = shoppingcart method
 //			// prints out udpated cart with current subtotal
 		
-		System.out.println(getValidInventoryChoice(scnr, List<Product<>));
+
 		
 //			System.out.println("\nDo you want to add anything else ('y') "
 //					+ "review products ('options') or checkout ('exit')?");
@@ -58,7 +69,6 @@ public class SVKPartyStoreApp {
 		
 		//askUserForPaymentMethod(scnr);
 		
-		System.out.println("Would you like us ");
 		
 		printReceipt();
 		
@@ -79,17 +89,18 @@ public class SVKPartyStoreApp {
 		
 	}
 	
-	public static void printInventory() {
-		List<Product> inventoryList = SVKUtilFile.readFile();
+	public static List<Product> printInventory() {
+		List<Product> menu = SVKUtilFile.readFile();
 		int i = 1;
 		System.out.println("SKU  Product                        Price");
 		System.out.println("===  ======================        =======");
 		
-		for (Product inv : inventoryList) {
+		for (Product inv : menu) {
 			String format = "%2d. %-30s $%.2f%n";
 	        System.out.printf(format, i++, inv.getProductName(), inv.getPrice());
+	        // System.out.println(inv.getStock());
 		}
-		return;
+		return menu;
 	}
 	
 }
