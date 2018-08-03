@@ -4,11 +4,13 @@ public class Inventory {
 	
 	private String productName;
 	private double price;
+	private int stock;
 	
 	public Inventory(String product, double price) {
 		super();
 		this.productName = productName;
 		this.price = price;
+		this.stock = stock;
 	}
 	
 	public Inventory() {
@@ -25,6 +27,12 @@ public class Inventory {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	@Override
 	public String toString() {
