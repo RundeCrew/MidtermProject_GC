@@ -1,19 +1,20 @@
 package midterm;
 
-public class Inventory {
+// TODO : Java is confused ... rename this class to Product
+public class Product {
 	
 	private String productName;
 	private double price;
 	private int stock;
 	
-	public Inventory(String product, double price) {
+	public Product(String productName, double price, int stock) {
 		super();
 		this.productName = productName;
 		this.price = price;
 		this.stock = stock;
 	}
 	
-	public Inventory() {
+	public Product() {
 	}
 	
 	public String getProductName() {

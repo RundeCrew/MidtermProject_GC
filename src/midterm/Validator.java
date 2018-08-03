@@ -53,6 +53,19 @@ public class Validator {
 			return getInt(scnr, prompt);
 		}
 	}
+	public static int getQuantityInt(Scanner scnr, String prompt, Product inventory) {
+		// This approach uses exception handling.
+		System.out.print(prompt);
+		try {
+			int num = scnr.nextInt();
+			scnr.nextLine();
+			return num;
+		} catch (InputMismatchException e)  {
+			System.out.println("We're sorry but we only have " + inventory.getStock() + ", please enter a valid quantity.");
+			scnr.nextLine();
+			return getInt(scnr, prompt);
+		}
+	}
 
 	/**
 	 * Get any valid double.

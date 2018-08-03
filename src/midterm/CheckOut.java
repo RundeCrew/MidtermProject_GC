@@ -36,9 +36,14 @@ public class CheckOut {
 		double grandTotal = subTotal + salesTax + bottleDeposit;
 		// borrow print set up from shopping cart
 		
-		paymentMethod = Validator.getString(scnr, "How would you like to pay today? (cash, check or credit card)");
+
 		
-		if (paymentMethod.equals("cash")) {
+		//public static String askUserForPaymentMethod(Scanner scnr) {
+		String paymentMethod = Validator.getStringMatchingRegex(scnr, 
+                "How would you like to pay? Cash, Check or Charge? ",
+                "cash|check|charge");
+	  		
+		if (paymentMethod.ignoresCase().equals("cash")) {
 			System.out.println("How much money are you tendering to pay?");
 			double tenderedCash = scnr.nextDouble();
 			double change = grandTotal - tenderedCash;
@@ -56,6 +61,10 @@ public class CheckOut {
 			System.out.println("Thanks!");
 		}
 		return grandTotal;
+	}
+
+	
+		
 	}
 	
 }

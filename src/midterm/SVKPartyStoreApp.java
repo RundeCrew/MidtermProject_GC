@@ -3,12 +3,6 @@ package midterm;
 import java.util.List;
 import java.util.Scanner;
 
-import org.graalvm.compiler.hotspot.word.HotSpotWordTypes;
-
-import com.sun.jdi.event.WatchpointEvent;
-
-import sun.jvm.hotspot.HelloWorld;
-
 
 public class SVKPartyStoreApp {
 
@@ -16,7 +10,8 @@ public class SVKPartyStoreApp {
 		
 		Scanner scnr = new Scanner(System.in);
 		SVKUtilFile.createBlankFile("inventory.txt");
-		List<Inventory> inventory = SVKUtilFile.readFile();
+		
+		List<Product> menu = SVKUtilFile.readFile();
 		String cont = null;
 		
 		// Present today's products in an Array
@@ -45,19 +40,25 @@ public class SVKPartyStoreApp {
 //			System.out.println("What would you like to add to your shopping cart (enter SKU number)?");
 //			// itemSKU = shoppingcart method
 //			// prints out udpated cart with current subtotal
+		
+		System.out.println(getValidInventoryChoice(scnr, List<Product<>));
+		
 //			System.out.println("\nDo you want to add anything else ('y') "
 //					+ "review products ('options') or checkout ('exit')?");
 //			cont = scnr.next();
 //				if (cont.equals("options")) {
-//					printInventory(inventory);
+//					printInventory(menu);
 //					System.out.println("\nDo you want to add anything else ('y') "
 //							+ "review products ('options') or checkout ('exit')?");
 //				}
 //			
 //		} while (cont.equals('y'));
 			
+		//call to the checkout 
 		
-		askUserForPaymentMethod(scnr);
+		//askUserForPaymentMethod(scnr);
+		
+		System.out.println("Would you like us ");
 		
 		printReceipt();
 		
@@ -77,23 +78,14 @@ public class SVKPartyStoreApp {
 		
 		
 	}
-
-	public static void askUserForPaymentMethod(Scanner scnr) {
-		System.out.println("Please select a payment method (1-3)");
-		System.out.println("1. Cash\t\t2. Check\t3. Credit Card");
-		String paymentMethod = scnr.nextLine();
-		if (Validator.isMethodPaymentValid(paymentMethod) == false) {
-			System.out.println("Please select an option (1 - 3)");
-		}
-	}
 	
 	public static void printInventory() {
-		List<Inventory> inventoryList = SVKUtilFile.readFile();
+		List<Product> inventoryList = SVKUtilFile.readFile();
 		int i = 1;
 		System.out.println("SKU  Product                        Price");
 		System.out.println("===  ======================        =======");
 		
-		for (Inventory inv : inventoryList) {
+		for (Product inv : inventoryList) {
 			String format = "%2d. %-30s $%.2f%n";
 	        System.out.printf(format, i++, inv.getProductName(), inv.getPrice());
 		}

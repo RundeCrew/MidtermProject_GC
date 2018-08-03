@@ -17,21 +17,21 @@ package midterm;
 		public static final String FILE_NAME = "inventory.txt";
 		
 		// Modify this method as necessary to convert a line of text from the file to a new item instance
-		private static Inventory convertLineToItem(String line) {
+		private static Product convertLineToItem(String line) {
 			String[] parts = line.split("\t");
-			Inventory inventory = new Inventory();
+			Product inventory = new Product();
 			inventory.setProductName(parts[0]);
 			inventory.setPrice(Double.parseDouble(parts[1]));
 			return inventory;
 		}
 		
 		// Modify this method as necessary to convert an item instance to a line of text in the file
-		private static String convertItemToLine(Inventory inventory) {
+		private static String convertItemToLine(Product inventory) {
 			return String.format("%s\t%s", inventory.getProductName(), inventory.getPrice());
 		}
 		
-		public static List<Inventory> readFile() {
-			List<Inventory> items = new ArrayList<>();
+		public static List<Product> readFile() {
+			List<Product> items = new ArrayList<>();
 			String line;
 			try (
 				// Open/prepare the resources in the try resources block
@@ -59,7 +59,7 @@ package midterm;
 			return items;
 		}
 		
-		public static void appendLine(Inventory item) {
+		public static void appendLine(Product item) {
 			// convert player object to a string line of text to be written to the file
 			String line = convertItemToLine(item);
 			
@@ -78,14 +78,14 @@ package midterm;
 			}
 		}
 		
-		public static void writeFile(List<Inventory> items) {
+		public static void writeFile(List<Product> items) {
 			try (
 				// The `false` here tells the FileOutputStream to overwrite the file, rather than append to it
 				FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME, false);
 				PrintWriter fileWriter = new PrintWriter(fileOutputStream);
 			) {
 				// write to the file
-				for (Inventory item : items) {
+				for (Product item : items) {
 					// each item must be converted to a string of text to write to the file
 					String line = convertItemToLine(item);
 					fileWriter.println(line);
@@ -122,8 +122,8 @@ package midterm;
 			}
 		}
 		
-		public static List<Inventory> readFile_theOldPainfulWay() {
-			List<Inventory> items = new ArrayList<>();
+		public static List<Product> readFile_theOldPainfulWay() {
+			List<Product> items = new ArrayList<>();
 			
 			FileInputStream fileInputStream = null;
 			Scanner fileScanner = null;
