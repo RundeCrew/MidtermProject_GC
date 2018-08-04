@@ -8,7 +8,7 @@ public class CheckOut {
 
 	// need shopping cart array from main that has product, price and units
 	
-	public static double checkOut (Inventory shoppingcart) {
+	public static double checkOut (CartItem cart) {
 		
 		Scanner scnr = new Scanner(System.in);
 		double total = 0.0, salesTax = 0.0, bottleDeposit = 0.0;
@@ -17,33 +17,49 @@ public class CheckOut {
 		double subTotal =
 		salesTax = subTotal * .1;
 		
-		List<Inventory> shoppingcart = new ArrayList<>();
+		List<CartItem> FinalCart = new ArrayList<>();
 		
 		
 		// calculate deposit
 		
-		for (int i = 0; i < shoppingcart.length; i++) {
-			String item = shoppingcart.getProductName(); 
-			if (item.equals"Two Hearted Ale") {
-				bottleDeposit = bottleDeposit + (.6 * item.getUnits);
+		for (CartItem productSold : cart) {
+			if (productSold.equals("Two Hearted Ale")) {
+				bottleDeposit = bottleDeposit + (.6 * cart.getQuantity);
 			}
-			// if repeats for M52 and wine bottle
+			else if (productSold.equals("M52")) {
+				bottleDeposit = bottleDeposit + (.6 * cart.getQuantity);
+			}
 		}
+		
+//		for (int i = 0; i < cart.size(); i++) {
+//			String item = cart.getProductName(); 
+//			if (item.equals"Two Hearted Ale") {
+//				bottleDeposit = bottleDeposit + (.6 * cart.getQuantity);
+//			}
+			// if repeats for M52 and wine bottle
 		
 		
 		System.out.println("Your order for today:");
 		// calculate grandtotal & print summary
 		double grandTotal = subTotal + salesTax + bottleDeposit;
-		// borrow print set up from shopping cart
-		
+		// Assume cart only has items ordered, no product with 0 orders
 
+		System.out.println("Product\t\tQuantity\t\tUnit Price\t\tTotal Price");
+		System.out.println("=======\t\t========\t\t=========\t\t===========");
+		
+		// assume SubTotal coming over in cart - otherwise do math sku.getQuantity * sku.GetPrice
+		for (CartItem sku : cart) {
+			System.out.println(sku.getProductName + "\t\t" + sku.getQuantity + "\t\t$"
+					+ sku.getPrice + "\t\t$" + sku.getSubTotal);
+		}
+		System.out.println("\t\t\t\t\tGrand Total: $" + grandTotal);
 		
 		//public static String askUserForPaymentMethod(Scanner scnr) {
-		String paymentMethod = Validator.getStringMatchingRegex(scnr, 
+		paymentMethod = Validator.getStringMatchingRegex(scnr, 
                 "How would you like to pay? Cash, Check or Charge? ",
                 "cash|check|charge");
 	  		
-		if (paymentMethod.ignoresCase().equals("cash")) {
+		if (paymentMethod.equals("cash")) {
 			System.out.println("How much money are you tendering to pay?");
 			double tenderedCash = scnr.nextDouble();
 			double change = grandTotal - tenderedCash;
@@ -55,16 +71,12 @@ public class CheckOut {
 			System.out.println("Thanks.  By the way, how are your grandchildren?");
 		}
 		else {
-			int ccNumber = Validator.getCC(scnr, "What is your credit card number?");
-			int ccExpiration = Validator.getExpiration(scnr, "What is the expiration date (MM/YY)");
-			int ccCVV = Validator.getInt(scnr, "What is your CVV code on the back?", 1, 999);
+			Validator.(scnr, "What is your credit card number?");
+			Validator.checkExpiration(scnr, "What is the expiration date (MM/YY)");
+			Validator.getInt(scnr, "What is your CVV code on the back?", 1, 999);
 			System.out.println("Thanks!");
 		}
 		return grandTotal;
-	}
-
-	
-		
 	}
 	
 }

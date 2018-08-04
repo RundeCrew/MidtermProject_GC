@@ -170,6 +170,8 @@ public class Validator {
 		return input;
 	}
 
+	public static boolean validateCardExpiryDate(String expiryDate) {
+	    return expiryDate.matches("(?:0[1-9]|1[0-2])/[0-9]{2}");
 	/**
 	 * Get a date from user input in the format mm/dd/yyyy
 	 */
@@ -197,5 +199,21 @@ public class Validator {
 		} while (!isValid);
 		return date;
 	}
-
+	public static void checkExpiration(Scanner scnr, String prompt) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/yy");
+		simpleDateFormat.setLenient(false);
+		System.out.println(prompt);
+		boolean valid;
+		do {
+			String input = scnr.next();
+			if (input.matches("(?:0[1-9]|1[0-2])/[0-9]{2}")) {
+				Date expiry = simpleDateFormat.parse(input);
+				valid = expiry.before(new Date());
+			} else {
+				System.out.println("Please enter a valid MM/YY");
+			}
+		} while (valid = true);
+	}
+	
+	
 }
