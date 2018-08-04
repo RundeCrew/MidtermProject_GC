@@ -31,7 +31,7 @@ public class SVKPartyStoreApp {
 		
 		// String guestName = Validator.getString(scnr, "What is your name?");
 		// System.out.println("Thanks " + guestName + ", today our selection of gourmet products is:");
-		int itemSKU = 0;
+//		int itemSKU = 0;
 		
 //		int i = 1;
 //		
@@ -39,11 +39,11 @@ public class SVKPartyStoreApp {
 		printInventory();
 		int userChoice = Validator.getInt(scnr,"Please select the item number that you would like to add to your cart.", 1, menu.size());
 		System.out.println(userChoice);
-		int availStock = 0;
-		for ( unitStock : menu );
+//		int availStock = 0;
+//		for ( unitStock : menu );
 		
 		// int availStock = menu.getStock(userChoice);
-		int availStock = menu.getStock[userChoice - 1];
+//		int availStock = menu.getStock[userChoice - 1];
 		
 		
 		// int quantity = Validator.getQuantityInt(scnr, "How many would you like?", 1, availStock, menu);
