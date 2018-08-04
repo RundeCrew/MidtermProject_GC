@@ -9,9 +9,7 @@ public class SVKPartyStoreApp {
 
 	public static void main(String[] args) {
 		
-		Scanner scnr = new Scanner(System.in);
-		SVKUtilFile.createBlankFile("inventory.txt");
-		
+		Scanner scnr = new Scanner(System.in);				
 		
 		List<Product> menu = SVKUtilFile.readFile();
 		String cont = null;
