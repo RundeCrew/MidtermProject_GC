@@ -172,6 +172,7 @@ public class Validator {
 
 	public static boolean validateCardExpiryDate(String expiryDate) {
 	    return expiryDate.matches("(?:0[1-9]|1[0-2])/[0-9]{2}");
+	}
 	/**
 	 * Get a date from user input in the format mm/dd/yyyy
 	 */
