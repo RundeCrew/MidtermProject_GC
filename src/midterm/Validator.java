@@ -109,11 +109,19 @@ public class Validator {
 	public static String getString(Scanner scnr, String prompt) {
 
 		System.out.print(prompt);
+		return scnr.nextLine();
+	}
+	
+	public static String checkContinue(Scanner scnr, String prompt) {
+
+		System.out.print(prompt);
 		boolean choiceIsOK = false;
 		String userinput;
+		char choice;
 	    do{
 	    userinput = scnr.next();
-	    char choice = userinput.toLowerCase().charAt(0);
+	    scnr.nextLine();
+	    choice = userinput.toLowerCase().charAt(0);
 	    switch(choice){
 	    case 'y':
 	        choiceIsOK = true;
@@ -121,13 +129,18 @@ public class Validator {
 	    case 'n':
 	        choiceIsOK = true;
 	        break;
+	    case 'l':
+	        choiceIsOK = false;
+			SVKPartyStoreApp.printInventory();
+			System.out.println("Would you like to add another item (yes or no)");
+			break;
 	    default:
 	        // error or warning
-	        System.out.println("Type y or n to respectively continue or quit");
+	        System.out.println("Type yes or no to respectively continue or quit or list to see products available");
 	        break;
 	    }
 	    }while(!choiceIsOK);
-		return userinput;
+		return Character.toString(choice);
 	}
 	
 	/**

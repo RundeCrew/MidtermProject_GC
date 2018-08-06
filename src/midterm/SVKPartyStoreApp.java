@@ -23,9 +23,11 @@ public class SVKPartyStoreApp {
 		System.out.println("Welcome to SVK Party Store! Southeast Michigan's Gourmet Party Store");
 		System.out.println("Please enter your name:");
 		String userName = scnr.next();
+		scnr.nextLine();
 		// CheckOut.provideReceipt(scnr, userName);
 		
 		System.out.println("Hello " + userName + ", here is a list of the items we currently have in stock:");
+		
 		
 		printInventory();   // method is below with formating. pulling from txt file
 		System.out.println(" ");
@@ -38,10 +40,10 @@ public class SVKPartyStoreApp {
 			// this method is here in the main
 			printCart(cart);
 			
-			cont = Validator.getString(scnr, "\nWould you like to add another item to your cart?");
+			cont = Validator.checkContinue(scnr, "\nWould you like to add another item (yes or no) or see the list again (list)?");
 //			System.out.println("\nWould you like to add another item to your cart?");
 //			cont = scnr.nextLine();
-	
+			
 		} while (cont.trim().toLowerCase().startsWith("y"));
 		
 		// System.out.println(" " + userName + ", here is your final order: \n ");
@@ -74,7 +76,7 @@ public class SVKPartyStoreApp {
 			System.out.printf("%2d. ",  i++);
 			System.out.printf("%-21s ",  inv.getProduct().getProductName());
 			System.out.printf("%4d", inv.getQuantity());
-		    String priceStr = "$" + String.format("%.2f",  inv.getProduct().getPrice());
+		    String priceStr = "$" + String.format("%.2f",  inv.getProduct().getPrice()*inv.getQuantity());
 		    System.out.printf("%16s", priceStr);
 		    System.out.println();
 		    
