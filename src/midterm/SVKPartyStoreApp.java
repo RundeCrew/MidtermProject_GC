@@ -23,6 +23,7 @@ public class SVKPartyStoreApp {
 		System.out.println("Welcome to SVK Party Store! Southeast Michigan's Gourmet Party Store");
 		System.out.println("Please enter your name:");
 		String userName = scnr.next();
+		// CheckOut.provideReceipt(scnr, userName);
 		
 		System.out.println("Hello " + userName + ", here is a list of the items we currently have in stock:");
 		
@@ -49,8 +50,9 @@ public class SVKPartyStoreApp {
 		
 		CheckOut.getPaymentMethod(scnr, grandTotal);
 		CheckOut.provideReceipt(scnr, userName);
-		
-		
+		printCart(cart);
+		CheckOut.printReceiptSummary(cart, sum);
+
 		System.out.println();
 		
 		System.out.println("Thank you for shopping at the SVK Party Store, we appreciate your business.");
