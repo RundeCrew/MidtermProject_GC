@@ -11,94 +11,93 @@ public class SVKPartyStoreApp {
 		
 		Scanner scnr = new Scanner(System.in);				
 		
+		String cont = "y";
+		int quantity;        
+		int userChoice;
+		
 		List<Product> menu = SVKUtilFile.readFile();
-		String cont = null;
 		
-		// Present today's products in an Array
-				// DO/WHILE
-					// Ask what product they want to start with?
-					// Call ShoppingCart method
-					// Asks if they want to add anything else?
-					// Option to print original product list again any time
-				// When exiting call CheckOut for total 
-					// then call Checkout.payment
-				//give option to email reciept
+		ArrayList<CartItem> cart = new ArrayList<>();
+		//CartItem userList = new CartItem();
 		
-		System.out.println("Welcome to SVK Party Store!");
-		System.out.println("Southeast Michigan's Gourmet Party Store");
+		System.out.println("Welcome to SVK Party Store! Southeast Michigan's Gourmet Party Store");
+		System.out.println("Please enter your name:");
+		String userName = scnr.next();
 		
-		// String guestName = Validator.getString(scnr, "What is your name?");
-		// System.out.println("Thanks " + guestName + ", today our selection of gourmet products is:");
-//		int itemSKU = 0;
+		System.out.println("Hello " + userName + ", here is a list of the items we currently have in stock:");
 		
-//		int i = 1;
-//		
-//		}
-		printInventory();
-		int userChoice = Validator.getInt(scnr,"Please select the item number that you would like to add to your cart.", 1, menu.size());
-		System.out.println(userChoice);
-//		int availStock = 0;
-//		for ( unitStock : menu );
-		
-		// int availStock = menu.getStock(userChoice);
-//		int availStock = menu.getStock[userChoice - 1];
-		
-		
-		// int quantity = Validator.getQuantityInt(scnr, "How many would you like?", 1, availStock, menu);
-//		do {
-//			System.out.println("What would you like to add to your shopping cart (enter SKU number)?");
-//			// itemSKU = shoppingcart method
-//			// prints out udpated cart with current subtotal
-		
-
-		
-//			System.out.println("\nDo you want to add anything else ('y') "
-//					+ "review products ('options') or checkout ('exit')?");
-//			cont = scnr.next();
-//				if (cont.equals("options")) {
-//					printInventory(menu);
-//					System.out.println("\nDo you want to add anything else ('y') "
-//							+ "review products ('options') or checkout ('exit')?");
-//				}
-//			
-//		} while (cont.equals('y'));
+		printInventory();   // method is below with formating. pulling from txt file
+		System.out.println(" ");
+		do {
+			userChoice = Validator.getInt(scnr, "" + userName + ", please select the item number that you would like to add to your cart.", 1, menu.size());
+			quantity = Validator.getQuantityInt(scnr, "How many would you like?", 1, menu.get(userChoice-1).getStock(), menu.get(userChoice-1));
+			CartItem ci = new CartItem(menu.get(userChoice-1), quantity);
+			cart.add(ci);
 			
-		//call to the checkout 
+			// this method is here in the main
+			printCart(cart);
+			
+			System.out.println("\nWould you like to add another item to your cart?");
+			cont = scnr.next();
+	
+		} while (cont.trim().toLowerCase().startsWith("y"));
 		
-		//askUserForPaymentMethod(scnr);
+		System.out.println(" " + userName + ", here is your final order: \n ");
+		printCart(cart);
+		
+//		//Validator for "How would you like to pay?" 
+//		
+//		printReceipt();
+//		//Would you like your receipt emailed to you?
+		
+		System.out.println("Thank you for shopping at the SVK Party Store, we appreciate your business.");
 		
 		
-		printReceipt();
+	}
+	
+	private static void printCart(ArrayList<CartItem> cart) {
 		
-		// receipt - email option
-		System.out.println();
-		// thank you!!
+		int i = 1;
+		double sum = 0;
+		
+		System.out.println(" #" + "  Product\t\t" + "Quantity " + "    Price");
+		System.out.println(" ==========================================");
+		
+		for (CartItem inv : cart) {
+			System.out.printf("%2d. ",  i++);
+			System.out.printf("%-21s ",  inv.getProduct().getProductName());
+			System.out.printf("%4d", inv.getQuantity());
+		    String priceStr = "$" + String.format("%.2f",  inv.getProduct().getPrice());
+		    System.out.printf("%13s", priceStr);
+		    System.out.println();
+		    
+	        sum += inv.getProduct().getPrice() * inv.getQuantity();
+		}
+
+		String format = "%s%.2f%n";
+		System.out.printf(format, "\n Subtotal (not including tax/deposit): $" , sum);
 	}
 	
 	private static void printReceipt() {
-		System.out.println("Product\t\tQuantity\t\tUnit Price\t\tTotal Price");
-		
-//		System.out.println("SKU      Product                        Price");
-//		System.out.println("Subtotal");
-//		System.out.println("Deposit");
-//		System.out.println("Tax");
-//		System.out.println("Total Price);
-		
-		
+		System.out.println("Product\t\tQuantity\t\tUnit Price\t\tTotal Price");	
 	}
 	
-	public static List<Product> printInventory() {
+	public static void printInventory() {
 		List<Product> menu = SVKUtilFile.readFile();
 		int i = 1;
-		System.out.println("SKU  Product                        Price");
-		System.out.println("===  ======================        =======");
+		System.out.println(" #" + "  Product\t\t\t" + "Price");
+		System.out.println(" ========================================");
 		
 		for (Product inv : menu) {
-			String format = "%2d. %-30s $%.2f%n";
-	        System.out.printf(format, i++, inv.getProductName(), inv.getPrice());
-	        // System.out.println(inv.getStock());
+			System.out.printf("%2d. ",  i++);
+			System.out.printf("%-21s ",  inv.getProductName());
+			String priceStr = "$" + String.format("%.2f", inv.getPrice());
+		    System.out.printf("%12.12s", priceStr);
+		    System.out.println();
+|
+|
+//			String format = "%2d. %-27s $%.2f%n";
+//	        System.out.printf(format, i++, inv.getProductName(), inv.getPrice());
 		}
-		return menu;
 	}
-	
 }

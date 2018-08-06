@@ -56,7 +56,7 @@ public class Validator {
 	public static int getQuantityInt(Scanner scnr, String prompt, int min, int max, Product menu) {
 		boolean isValid = false;
 		int number;
-		System.out.println(prompt);
+		
 		do {
 			number = getInt(scnr, prompt);
 			if (number < min) {
@@ -170,11 +170,11 @@ public class Validator {
 		return input;
 	}
 
-	public static boolean validateCardExpiryDate(String expiryDate) {
-	    return expiryDate.matches("(?:0[1-9]|1[0-2])/[0-9]{2}");
-	/**
-	 * Get a date from user input in the format mm/dd/yyyy
-	 */
+//	public static boolean validateCardExpiryDate(String expiryDate) {
+//	   return expiryDate.matches("(?:0[1-9]|1[0-2])/[0-9]{2}");
+//	/**
+//	 * Get a date from user input in the format mm/dd/yyyy
+//	 */
 	public static Date getDate(Scanner scnr, String prompt) {
 		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		format.setLenient(false); // <-- date format must match
@@ -199,7 +199,7 @@ public class Validator {
 		} while (!isValid);
 		return date;
 	}
-	public static void checkExpiration(Scanner scnr, String prompt) {
+	public static void checkExpiration(Scanner scnr, String prompt) throws ParseException { // added throws exception to kick the red squigles
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/yy");
 		simpleDateFormat.setLenient(false);
 		System.out.println(prompt);

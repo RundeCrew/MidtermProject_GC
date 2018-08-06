@@ -7,8 +7,7 @@ import java.util.Scanner;
 
 public class ShoppingCart {
 			
-	// TODO figure out propr way to call the Array list in the parameters
-	public static int getValidInventoryChoice (Scanner scnr, List<Product> menu) { 
+//	public static int getValidInventoryChoice (Scanner scnr, List<Product> menu) { 
 //		int userChoice;
 //		boolean inputIsValid = false;
 //			if (Validator.getInt(scnr,"Please select the item number that you would like to add to your cart.", 1,12)) { 
@@ -19,8 +18,8 @@ public class ShoppingCart {
 //				continue;
 //			}
 	
-		return userChoice;
-	}
+//		return userChoice;
+//	}
 	
 //	private static void listPrice(userChoice) {
 //		double price = 0.0;

@@ -26,7 +26,7 @@ public class CheckOut {
 			if (productSold.equals("Two Hearted Ale")) {
 				bottleDeposit = bottleDeposit + (.6 * cart.getQuantity);
 			}
-			else if (productSold.equals("M52")) {
+			else if (productSold.equals("M43")) {
 				bottleDeposit = bottleDeposit + (.6 * cart.getQuantity);
 			}
 		}

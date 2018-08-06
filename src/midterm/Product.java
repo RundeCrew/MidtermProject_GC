@@ -1,6 +1,5 @@
 package midterm;
 
-// TODO : Java is confused ... rename this class to Product
 public class Product {
 	
 	private String productName;
@@ -8,7 +7,6 @@ public class Product {
 	private int stock;
 	
 	public Product(String productName, double price, int stock) {
-		super();
 		this.productName = productName;
 		this.price = price;
 		this.stock = stock;
@@ -30,15 +28,21 @@ public class Product {
 		this.price = price;
 	}
 	public int getStock() {
-		return stock;
+		return this.stock;
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
 	@Override
 	public String toString() {
-		return "Inventory [productName =" + productName + ", price=" + price + "]";
+	
+//		return productName + "\t\t" + price;
+		
+		return String.format("%-30s $%.2f%n", productName, price);
 	}
+
+	
 	
 	
 }
