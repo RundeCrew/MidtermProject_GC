@@ -31,11 +31,14 @@ public class Validator {
 	}
 	
 	public static String isEmailAddressValid(Scanner scnr) {
-        do {
-			String email = scnr.next(); 
+        boolean match = false;
+        String email = null;
+		do {
+			email = scnr.next(); 
 			String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
 	        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
 	        java.util.regex.Matcher m = p.matcher(email);
+	        match = m.matches();
 	        if (m.matches()) {
 	        	return email;
 	        }
@@ -43,7 +46,8 @@ public class Validator {
 	        	System.out.println("Sorry, that is not a valid email address.");
 	        	System.out.println("Please try entering your email address again.");
 	        }
-        } while (!m.matches());
+        } while (!match);
+		return email;
         
         //return m.matches();
 	}
