@@ -18,7 +18,6 @@ public class SVKPartyStoreApp {
 		List<Product> menu = SVKUtilFile.readFile();
 		
 		ArrayList<CartItem> cart = new ArrayList<>();
-		//CartItem userList = new CartItem();
 		
 		System.out.println("Welcome to SVK Party Store! Southeast Michigan's Gourmet Party Store");
 		System.out.println("Please enter your name:");
@@ -42,20 +41,23 @@ public class SVKPartyStoreApp {
 	
 		} while (cont.trim().toLowerCase().startsWith("y"));
 		
-		System.out.println(" " + userName + ", here is your final order: \n ");
-		printCart(cart);
+		// System.out.println(" " + userName + ", here is your final order: \n ");
+		double sum = printCart(cart);
+		// CheckOut newtotal = new CheckOut();
+		double grandTotal = CheckOut.calcTaxDeposit(cart, sum);
 		
-//		//Validator for "How would you like to pay?" 
-//		
-//		printReceipt();
-//		//Would you like your receipt emailed to you?
+//		CheckOut.getPaymentMethod(scnr);
+//		provideReceipt(scnr);
+		
+		
+		System.out.println();
 		
 		System.out.println("Thank you for shopping at the SVK Party Store, we appreciate your business.");
 		
 		
 	}
 	
-	private static void printCart(ArrayList<CartItem> cart) {
+	private static double printCart(ArrayList<CartItem> cart) {
 		
 		int i = 1;
 		double sum = 0;
@@ -76,10 +78,7 @@ public class SVKPartyStoreApp {
 
 		String format = "%s%.2f%n";
 		System.out.printf(format, "\n Subtotal (not including tax/deposit): $" , sum);
-	}
-	
-	private static void printReceipt() {
-		System.out.println("Product\t\tQuantity\t\tUnit Price\t\tTotal Price");	
+		return sum;
 	}
 	
 	public static void printInventory() {

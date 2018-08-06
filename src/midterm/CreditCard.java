@@ -1,3 +1,4 @@
+package midterm;
 // Java program to check if a given credit
 // card is valid or not.
 import java.util.Scanner;
@@ -5,14 +6,21 @@ import java.util.Scanner;
 public class CreditCard {
     // Main Method
     public static void checkCreditCard(Scanner scnr, String prompt) {
-        // long number = 5196081888500645L;
-//        System.out.println(number + " is " + 
-//        (isValid(number) ? "valid" : "invalid"));
+        
     	System.out.println(prompt);
-    	cardNumber = scnr.next();
-    	// convert cardNumber String to long number
-    	
+    	long number = 0;
+    	do {
+	    	String cardNumber = scnr.next();
+	    	number = Long.parseLong(cardNumber);
+	    	// convert cardNumber String to long number
+	    	System.out.println(number + " is " + 
+	    	        (isValid(number) ? "valid" : "invalid"));
+	    	if (isValid(number) == false) {
+	    		System.out.println("Please reenter a valid credit card number:");
+	    	}
+    	} while (isValid(number) == false);
     }
+    	
  
     // Return true if the card number is valid
     public static boolean isValid(long number)
