@@ -29,23 +29,24 @@ public class CheckOut {
 		
 		
 		// calculate deposit
-		
+	    double sumDep = 0.00;
 		for (CartItem productSold : cart) {
 
 			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
-				bottleDeposit = bottleDeposit + (.6 * productSold.getQuantity());
+				bottleDeposit = (.6 * productSold.getQuantity());
 				
 			}
 			else if (productSold.getProduct().getProductName().equals("M43 IPA")) {
-				bottleDeposit = bottleDeposit + (.6 * productSold.getQuantity());
+				bottleDeposit = (.6 * productSold.getQuantity());
 				
 			}
 			else if (productSold.getProduct().getProductName().equals("Dales Pale Ale")) {
-				bottleDeposit = bottleDeposit + (.6 * productSold.getQuantity());
+				bottleDeposit = (.6 * productSold.getQuantity());
 			}
+			sumDep += bottleDeposit;
 		}
 		System.out.printf("%40s", "Deposit: ");
-		priceStr = "$" + String.format("%.2f",  bottleDeposit);
+		priceStr = "$" + String.format("%.2f",  sumDep);
 	    System.out.printf("%6s%n", priceStr);
 				
 		//System.out.println("\t\t\tDeposit: $" + bottleDeposit);

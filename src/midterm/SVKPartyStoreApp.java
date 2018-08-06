@@ -38,6 +38,7 @@ public class SVKPartyStoreApp {
 			// this method is here in the main
 			printCart(cart);
 			
+			cont = Validator.getString(scnr, "\nWould you like to add another item to your cart?");
 			System.out.println("\nWould you like to add another item to your cart?");
 			cont = scnr.nextLine();
 	

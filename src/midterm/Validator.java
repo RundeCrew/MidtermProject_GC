@@ -107,7 +107,7 @@ public class Validator {
 	 * Get any string.
 	 */
 	public static String getString(Scanner scnr, String prompt) {
-		// This approach uses exception handling.
+
 		System.out.print(prompt);
 		return scnr.nextLine();
 	}
