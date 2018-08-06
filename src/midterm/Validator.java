@@ -30,11 +30,22 @@ public class Validator {
 		return isValid;
 	}
 	
-	public static boolean isEmailAddressValid(String email) {
-        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-        java.util.regex.Matcher m = p.matcher(email);
-        return m.matches();
+	public static String isEmailAddressValid(Scanner scnr) {
+        do {
+			String email = scnr.next(); 
+			String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+	        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+	        java.util.regex.Matcher m = p.matcher(email);
+	        if (m.matches()) {
+	        	return email;
+	        }
+	        else {
+	        	System.out.println("Sorry, that is not a valid email address.");
+	        	System.out.println("Please try entering your email address again.");
+	        }
+        } while (!m.matches());
+        
+        //return m.matches();
 	}
 	
 	/**

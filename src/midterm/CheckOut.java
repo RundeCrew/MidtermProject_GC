@@ -65,7 +65,23 @@ public class CheckOut {
 			System.out.println("How much money are you tendering to pay?");
 			double tenderedCash = scnr.nextDouble();
 			double change = tenderedCash - grandTotal;
-			System.out.printf("Thanks.  Your change is $" + "%.2f", change);
+			if (change >= 0.00) {
+				System.out.printf("Thanks.  Your change is $" + "%.2f", change);
+			}
+			else {
+				double balanceDue = -change;
+				do {
+					System.out.println("Your balance due is $" + balanceDue);
+					System.out.println("Please enter additional cash payment amount:");
+					tenderedCash = scnr.nextDouble();
+					balanceDue = balanceDue - tenderedCash;
+					if (balanceDue < 0.00) {
+						change = -balanceDue;
+						System.out.printf("Thanks.  Your change is $" + "%.2f", change);
+					}
+				} while (balanceDue > 0.00);
+			}
+			
 		}
 		else if (paymentMethod.equals("check")) {
 			int checkNumber = Validator.getInt(scnr, "What is your checking account number?", 100000000, 999999999);
@@ -79,25 +95,26 @@ public class CheckOut {
 			System.out.println("Thanks!");
 		}
 	}
-//		
-//	public static void provideReceipt (Scanner scnr) {
-//		System.out.println("Would you like your receipt printed ('p') or by email?");
-//		String receiptType = scnr.next();
-//		if (receiptType.equals("p")) {
-//			printReceipt();
-//		}
-//		else {
-//			System.out.println("What is your email address?");
-//			String email = Validator.isEmailAddressValid(scnr.next());
-//			// format document that can be emailed
-//			// call email service
-//			
-//		}
-//		
-//	}
-//	
-//	private static void printReceipt() {
-//		System.out.println("Product\t\tQuantity\t\tUnit Price\t\tTotal Price");	
-//		}
-//	
+		
+	public static void provideReceipt (Scanner scnr, String name) {
+		System.out.println(name + ", would you like your receipt printed ('p') or by email ('e')?");
+		String receiptType = scnr.next();
+		if (receiptType.equals("p")) {
+			printReceipt();
+		}
+		else {
+			System.out.println("What is your email address?");
+			String email = Validator.isEmailAddressValid(scnr);
+			
+			// format document that can be emailed
+			// call email service
+			
+		}
+		
+	}
+	
+	private static void printReceipt() {
+		System.out.println("Product\t\tQuantity\t\tUnit Price\t\tTotal Price");	
+		}
+	
 }
