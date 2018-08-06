@@ -29,7 +29,7 @@ public class SVKPartyStoreApp {
 		printInventory();   // method is below with formating. pulling from txt file
 		System.out.println(" ");
 		do {
-			userChoice = Validator.getInt(scnr, "" + userName + ", please select the item number that you would like to add to your cart.", 1, menu.size());
+			userChoice = Validator.getInt(scnr, userName + ", please select the item number that you would like to add to your cart.", 1, menu.size());
 			quantity = Validator.getQuantityInt(scnr, "How many would you like?", 1, menu.get(userChoice-1).getStock(), menu.get(userChoice-1));
 			CartItem ci = new CartItem(menu.get(userChoice-1), quantity);
 			cart.add(ci);
@@ -93,9 +93,9 @@ public class SVKPartyStoreApp {
 			System.out.printf("%-21s ",  inv.getProductName());
 			String priceStr = "$" + String.format("%.2f", inv.getPrice());
 		    System.out.printf("%12.12s", priceStr);
-		    
+		    System.out.println();
+		}
 //			String format = "%2d. %-27s $%.2f%n";
 //	        System.out.printf(format, i++, inv.getProductName(), inv.getPrice());
 		}
 	}
-}
