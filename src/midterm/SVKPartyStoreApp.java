@@ -1,5 +1,6 @@
 package midterm;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class SVKPartyStoreApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		
 		Scanner scnr = new Scanner(System.in);				
 		
@@ -37,7 +38,7 @@ public class SVKPartyStoreApp {
 			printCart(cart);
 			
 			System.out.println("\nWould you like to add another item to your cart?");
-			cont = scnr.next();
+			cont = scnr.nextLine();
 	
 		} while (cont.trim().toLowerCase().startsWith("y"));
 		
@@ -46,7 +47,7 @@ public class SVKPartyStoreApp {
 		// CheckOut newtotal = new CheckOut();
 		double grandTotal = CheckOut.calcTaxDeposit(cart, sum);
 		
-//		CheckOut.getPaymentMethod(scnr);
+		CheckOut.getPaymentMethod(scnr, grandTotal);
 //		provideReceipt(scnr);
 		
 		
@@ -62,22 +63,24 @@ public class SVKPartyStoreApp {
 		int i = 1;
 		double sum = 0;
 		
-		System.out.println(" #" + "  Product\t\t" + "Quantity " + "    Price");
-		System.out.println(" ==========================================");
+		
+		System.out.println(" #" + "  Product\t\t" + "Quantity " + "       Price");
+		System.out.println(" =============================================");
 		
 		for (CartItem inv : cart) {
 			System.out.printf("%2d. ",  i++);
 			System.out.printf("%-21s ",  inv.getProduct().getProductName());
 			System.out.printf("%4d", inv.getQuantity());
 		    String priceStr = "$" + String.format("%.2f",  inv.getProduct().getPrice());
-		    System.out.printf("%13s", priceStr);
+		    System.out.printf("%16s", priceStr);
 		    System.out.println();
 		    
 	        sum += inv.getProduct().getPrice() * inv.getQuantity();
 		}
 
-		String format = "%s%.2f%n";
-		System.out.printf(format, "\n Subtotal (not including tax/deposit): $" , sum);
+		System.out.printf("%40s", "Subtotal: ");
+		System.out.printf("$%.2f%n",  sum);
+	
 		return sum;
 	}
 	

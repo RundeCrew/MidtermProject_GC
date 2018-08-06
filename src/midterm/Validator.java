@@ -156,6 +156,7 @@ public class Validator {
 	public static String getStringMatchingRegex(Scanner scnr, String prompt, String regex) {
 		boolean isValid = false;
 		String input;
+		
 		do {
 			input = getString(scnr, prompt);
 			
