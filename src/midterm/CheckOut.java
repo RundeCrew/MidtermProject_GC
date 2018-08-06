@@ -107,13 +107,10 @@ public class CheckOut {
 			printReceiptHeader(name);
 		}
 		else {
-			System.out.println("What is your email address?");
-			String email = Validator.isEmailAddressValid(scnr);
-			
-			
+			// System.out.println("What is your email address?");
+			String email = Validator.isEmailAddressValid(scnr);	
 			// format document that can be emailed
 			// call email service
-			
 		}
 		
 	}
