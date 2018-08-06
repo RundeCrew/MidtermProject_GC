@@ -93,9 +93,7 @@ public class SVKPartyStoreApp {
 			System.out.printf("%-21s ",  inv.getProductName());
 			String priceStr = "$" + String.format("%.2f", inv.getPrice());
 		    System.out.printf("%12.12s", priceStr);
-		    System.out.println();
-|
-|
+		    
 //			String format = "%2d. %-27s $%.2f%n";
 //	        System.out.printf(format, i++, inv.getProductName(), inv.getPrice());
 		}
