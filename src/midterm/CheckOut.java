@@ -59,7 +59,7 @@ public class CheckOut {
 		//public static String askUserForPaymentMethod(Scanner scnr) {
 		String paymentMethod = Validator.getStringMatchingRegex(scnr, 
                 "How would you like to pay? Cash, Check or Charge? ",
-                "cash|check|charge");
+                "cash|check|charge|Cash|Check|Charge");
 	  		
 		if (paymentMethod.equals("cash")) {
 			System.out.println("How much money are you tendering to pay?");
