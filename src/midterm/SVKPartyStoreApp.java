@@ -39,8 +39,8 @@ public class SVKPartyStoreApp {
 			printCart(cart);
 			
 			cont = Validator.getString(scnr, "\nWould you like to add another item to your cart?");
-			System.out.println("\nWould you like to add another item to your cart?");
-			cont = scnr.nextLine();
+//			System.out.println("\nWould you like to add another item to your cart?");
+//			cont = scnr.nextLine();
 	
 		} while (cont.trim().toLowerCase().startsWith("y"));
 		

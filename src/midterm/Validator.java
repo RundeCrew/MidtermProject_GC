@@ -109,7 +109,25 @@ public class Validator {
 	public static String getString(Scanner scnr, String prompt) {
 
 		System.out.print(prompt);
-		return scnr.nextLine();
+		boolean choiceIsOK = false;
+		String userinput;
+	    do{
+	    userinput = scnr.next();
+	    char choice = userinput.toLowerCase().charAt(0);
+	    switch(choice){
+	    case 'y':
+	        choiceIsOK = true;
+	        break;
+	    case 'n':
+	        choiceIsOK = true;
+	        break;
+	    default:
+	        // error or warning
+	        System.out.println("Type y or n to respectively continue or quit");
+	        break;
+	    }
+	    }while(!choiceIsOK);
+		return userinput;
 	}
 	
 	/**
