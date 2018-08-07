@@ -10,6 +10,9 @@ public class SVKPartyStoreApp {
 
 	public static void main(String[] args) throws ParseException {
 		
+		EmailClient emailClient = new EmailClient();
+		emailClient.sendEmail("mavirginia.cordero@gmail.com");
+		
 		Scanner scnr = new Scanner(System.in);				
 		
 		String cont = "y";
@@ -24,6 +27,7 @@ public class SVKPartyStoreApp {
 		System.out.println("Please enter your name:");
 		String userName = scnr.next();
 		scnr.nextLine();
+		// CheckOut.provideReceipt(scnr, userName);
 		
 		System.out.println("Hello " + userName + ", here is a list of the items we currently have in stock:");
 		
@@ -40,24 +44,25 @@ public class SVKPartyStoreApp {
 			printCart(cart);
 			
 			cont = Validator.checkContinue(scnr, "\nWould you like to add another item (yes or no) or see the list again (list)?");
+//			System.out.println("\nWould you like to add another item to your cart?");
+//			cont = scnr.nextLine();
 			
 		} while (cont.trim().toLowerCase().startsWith("y"));
 		
-		System.out.println(" " + userName + ", here is your final bill: \n ");
-		
+		// System.out.println(" " + userName + ", here is your final order: \n ");
 		double sum = printCart(cart);
+		// CheckOut newtotal = new CheckOut();
 		double grandTotal = CheckOut.calcTaxDeposit(cart, sum);
 		
 		CheckOut.getPaymentMethod(scnr, grandTotal);
 		CheckOut.provideReceipt(scnr, userName);
 		printCart(cart);
-		CheckOut.calcTaxDeposit(cart, sum);
-		
+//		CheckOut.printReceiptSummary(cart, sum);
 
 		System.out.println();
 		
-		System.out.println("Thank you for shopping at the SVK Party Store,\n "
-				+ "\twe appreciate your business.");
+		System.out.println("Thank you for shopping at the SVK Party Store, we appreciate your business.");
+		
 		
 	}
 	
@@ -82,8 +87,7 @@ public class SVKPartyStoreApp {
 		}
 		System.out.println("                              ________________");
 		System.out.printf("%40s", "Subtotal: ");
-		String priceStr = "$" + String.format("%.2f",  sum);
-	    System.out.printf("%6s%n", priceStr);
+		System.out.printf("$%.2f%n",  sum);
 	
 		return sum;
 	}
