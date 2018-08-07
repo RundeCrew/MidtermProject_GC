@@ -30,6 +30,7 @@ public class CheckOut {
 				bottleDeposit = 0.0;
 			}
 			else {
+				bottleDeposit = 0.0;
 				switch (item) {
 				case "Two Hearted Ale":
 					bottleDeposit = (.6 * productSold.getQuantity());
@@ -208,7 +209,7 @@ public class CheckOut {
 //	    double totalDep = 0.00;
 //	    
 //		for (CartItem productSold : cart) {
-//
+//			double bottleDeposit = 0.0;
 //			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
 //				bottleDeposit = (.6 * productSold.getQuantity());
 //				
