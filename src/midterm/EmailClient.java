@@ -46,7 +46,14 @@ public class EmailClient {
 			Message.RecipientType.TO, InternetAddress.parse(recipient));
 			message.setSubject("Your e-mail receipt from SVK Party Store");
 			 
-			String msg = body;
+			String msg = (body + "<html><head>" 
+			+ "<title>SVK Party Store</title>"
+			+ "</head>n"
+			+ "<body><div><strong>Thanks for shopping with us!</strong></div>"
+			+ "<div><img src=\"https://image.ibb.co/jULvLe/SVK_1.png\"  height=\"120\" width=\"120\"></div>"
+			+ "<div>Subscribe to our mailing list and be the first to find out about our new exclusive items.</em></div>"
+			+ "</body></html>");
+
 			 
 			MimeBodyPart mimeBodyPart = new MimeBodyPart();
 			mimeBodyPart.setContent(msg, "text/html");

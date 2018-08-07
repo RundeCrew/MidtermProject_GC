@@ -124,9 +124,9 @@ public class CheckOut {
 		String priceFormat = "$" + String.format("%.2f",  salesTax);
 	    String output1Format = String.format("%6s%n", priceFormat);
 	    
-	    sb.append(salesTaxFormat);
+	    sb.append(salesTaxFormat );
 	    sb.append(priceFormat);
-	    sb.append(output1Format);
+	    sb.append(output1Format+ "\n");
 	
 	    double sumDep = 0.00;
 		for (CartItem productSold : cart) {
