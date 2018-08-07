@@ -25,18 +25,46 @@ public class CheckOut {
 	
 	    double sumDep = 0.00;
 		for (CartItem productSold : cart) {
-
-			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
-				bottleDeposit = (.6 * productSold.getQuantity());
+			String item = productSold.getProduct().getProductName();
+			if (item != "Two Hearted Ale" && item != "M43 IPA" && item != "Dales Ale Ale") {
+				bottleDeposit = 0.0;
 			}
-			else if (productSold.getProduct().getProductName().equals("M43 IPA")) {
-				bottleDeposit = (.6 * productSold.getQuantity());
+			else {
+				switch (item) {
+				case "Two Hearted Ale":
+					bottleDeposit = (.6 * productSold.getQuantity());
+					break;
+				case "M43 IPA":
+					bottleDeposit = (.6 * productSold.getQuantity());
+					break;
+				case "Dales Pale Ale":
+					bottleDeposit = (.6 * productSold.getQuantity());
+					break;
+				default:
+					bottleDeposit = 0.0;
+				}
+				sumDep += bottleDeposit;
 			}
-			else if (productSold.getProduct().getProductName().equals("Dales Pale Ale")) {
-				bottleDeposit = (.6 * productSold.getQuantity());
-			}
-			sumDep += bottleDeposit;
 		}
+//			bottleDeposit = 0.0;
+//			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
+//				bottleDeposit = (.6 * productSold.getQuantity());
+//				break;
+//			}
+//			else if (productSold.getProduct().getProductName().equals("M43 IPA")) {
+//				bottleDeposit = (.6 * productSold.getQuantity());
+//				break;
+//			}
+//			else if (productSold.getProduct().getProductName().equals("Dales Pale Ale")) {
+//				bottleDeposit = (.6 * productSold.getQuantity());
+//				break;
+//			}
+//			else {
+//				bottleDeposit = 0.0;
+//			}
+//			sumDep += bottleDeposit;
+//			bottleDeposit = 0.0;
+			
 		System.out.printf("%40s", "Deposit: ");
 		priceStr = "$" + String.format("%.2f",  sumDep);
 	    System.out.printf("%6s%n", priceStr);
@@ -69,7 +97,7 @@ public class CheckOut {
 			else {
 				double balanceDue = -change;
 				do {
-					System.out.println("Your balance due is $" + balanceDue);
+					System.out.printf("Your balance due is $" + "%.2f", balanceDue);
 					System.out.println("Please enter additional cash payment amount:");
 					tenderedCash = scnr.nextDouble();
 					balanceDue = balanceDue - tenderedCash;
@@ -130,7 +158,7 @@ public class CheckOut {
 	
 	    double sumDep = 0.00;
 		for (CartItem productSold : cart) {
-
+			bottleDeposit = 0.0;
 			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
 				bottleDeposit = (.6 * productSold.getQuantity());
 			}
@@ -141,6 +169,7 @@ public class CheckOut {
 				bottleDeposit = (.6 * productSold.getQuantity());
 			}
 			sumDep += bottleDeposit;
+			
 		}
 		
 		String depositFormat = String.format("%40s", "Deposit: ");		

@@ -241,7 +241,7 @@ public class Validator {
 		} while (!isValid);
 		return date;
 	}
-	public static void checkExpiration(Scanner scnr, String prompt) throws ParseException { // added throws exception to kick the red squigles
+	public static boolean checkExpiration(Scanner scnr, String prompt) { // throws ParseException { // added throws exception to kick the red squigles
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/yy");
 		simpleDateFormat.setLenient(false);
 		System.out.println(prompt);
@@ -249,12 +249,20 @@ public class Validator {
 		do {
 			String input = scnr.next();
 			if (input.matches("(?:0[1-9]|1[0-2])/[0-9]{2}")) {
-				Date expiry = simpleDateFormat.parse(input);
+				Date expiry = null;
+				try {
+					expiry = simpleDateFormat.parse(input);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				valid = expiry.before(new Date());
+				System.out.println("Expiration date valid");
 			} else {
 				System.out.println("Please enter a valid MM/YY");
 			}
-		} while (valid = true);
+		} while (valid = false);
+		return valid;
 	}
 	
 	

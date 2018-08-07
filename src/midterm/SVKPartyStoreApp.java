@@ -50,7 +50,6 @@ public class SVKPartyStoreApp {
 		double sum = printCart(cart);
 		// CheckOut newtotal = new CheckOut();
 		double grandTotal = CheckOut.calcTaxDeposit(cart, sum);
-		
 		CheckOut.getPaymentMethod(scnr, grandTotal);
 		provideReceipt(scnr, userName, cart, sum);
 		
