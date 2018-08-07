@@ -23,22 +23,14 @@ public class CheckOut {
 		String priceStr = "$" + String.format("%.2f",  salesTax);
 	    System.out.printf("%6s%n", priceStr);
 	
-//		System.out.printf("$%.2f%n",  salesTax);
-		
-		// List<CartItem> finalCart = new ArrayList<>();
-		
-		
-		// calculate deposit
 	    double sumDep = 0.00;
 		for (CartItem productSold : cart) {
 
 			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
 				bottleDeposit = (.6 * productSold.getQuantity());
-				
 			}
 			else if (productSold.getProduct().getProductName().equals("M43 IPA")) {
 				bottleDeposit = (.6 * productSold.getQuantity());
-				
 			}
 			else if (productSold.getProduct().getProductName().equals("Dales Pale Ale")) {
 				bottleDeposit = (.6 * productSold.getQuantity());
@@ -51,9 +43,11 @@ public class CheckOut {
 				
 		//System.out.println("\t\t\tDeposit: $" + bottleDeposit);
 		
-		double grandTotal = subTotal + salesTax + bottleDeposit;
+		double grandTotal = subTotal + salesTax + sumDep;
 		System.out.printf("%40s", "Grand Total: ");
-		System.out.printf("$%.2f%n",  grandTotal);
+		priceStr = "$" + String.format("%.2f",  grandTotal);
+	    System.out.printf("%6s%n", priceStr);
+		
 		return grandTotal;
 	}
 		
@@ -117,11 +111,11 @@ public class CheckOut {
 	}
 	
 	private static void printReceiptHeader(String name) {
-		System.out.println("___");
-		System.out.println("|   \\     / | /  Party");
-		System.out.println("|__  \\   /  |/   Store");
-		System.out.println("   |  \\ /   |\\   Serving Grand Circus");
-		System.out.println("___|   V    | \\  Since 2018\n");
+		System.out.println("\t___");
+		System.out.println("\t|   \\     / | /  Party");
+		System.out.println("\t|__  \\   /  |/   Store");
+		System.out.println("\t   |  \\ /   |\\   Serving Grand Circus");
+		System.out.println("\t___|   V    | \\  Since 2018\n");
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -132,41 +126,44 @@ public class CheckOut {
 
 	
 		}
-	public static double printReceiptSummary (List<CartItem> cart, double sum) {
-		
-		Scanner scnr = new Scanner(System.in);
-		double total = 0.0, salesTax = 0.0, bottleDeposit = 0.0;
-		String paymentMethod = null;
-		
-		double subTotal = sum;
-		salesTax = subTotal * .06;
-		System.out.printf("%40s", "Sales Tax: ");
-		String priceStr = "$" + String.format("%.2f",  salesTax);
-	    System.out.printf("%6s%n", priceStr);
-	
-		// calculate deposit
-		
-		for (CartItem productSold : cart) {
-
-			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
-				bottleDeposit = bottleDeposit + (.6 * productSold.getQuantity());
-				
-			}
-			else if (productSold.getProduct().getProductName().equals("M43 IPA")) {
-				bottleDeposit = bottleDeposit + (.6 * productSold.getQuantity());
-				
-			}
-			else if (productSold.getProduct().getProductName().equals("Dales Pale Ale")) {
-				bottleDeposit = bottleDeposit + (.6 * productSold.getQuantity());
-			}
-		}
-		System.out.printf("%40s", "Deposit: ");
-		priceStr = "$" + String.format("%.2f",  bottleDeposit);
-	    System.out.printf("%6s%n", priceStr);
-		
-		double grandTotal = subTotal + salesTax + bottleDeposit;
-		System.out.printf("%40s", "Grand Total: ");
-		System.out.printf("$%.2f%n",  grandTotal);
-		return grandTotal;
-	}
+//	public static double printReceiptSummary (List<CartItem> cart, double sum) {
+//		
+//		Scanner scnr = new Scanner(System.in);
+//		double total = 0.0, salesTax = 0.0, bottleDeposit = 0.0;
+//		String paymentMethod = null;
+//		
+//		double subTotal = sum;
+//		salesTax = subTotal * .06;
+//		System.out.printf("%40s", "Sales Tax: ");
+//		String priceStr = "$" + String.format("%.2f",  salesTax);
+//	    System.out.printf("%6s%n", priceStr);
+//		
+//	    double totalDep = 0.00;
+//	    
+//		for (CartItem productSold : cart) {
+//
+//			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
+//				bottleDeposit = (.6 * productSold.getQuantity());
+//				
+//			}
+//			if (productSold.getProduct().getProductName().equals("M43 IPA")) {
+//				bottleDeposit = (.6 * productSold.getQuantity());
+//				
+//			}
+//			if (productSold.getProduct().getProductName().equals("Dales Pale Ale")) {
+//				bottleDeposit = (.6 * productSold.getQuantity());
+//			}
+//			totalDep += bottleDeposit;
+//		}
+//		System.out.printf("%40s", "Deposit: ");
+//		priceStr = "$" + String.format("%.2f",  totalDep);
+//	    System.out.printf("%6s%n", priceStr);
+//		
+//		double grandTotal = subTotal + salesTax + totalDep;
+//		System.out.printf("%40s", "Grand Total: ");
+//		priceStr = "$" + String.format("%.2f",  grandTotal);
+//	    System.out.printf("%6s%n", priceStr);
+//		return grandTotal;
+//		
+//	}
 }
