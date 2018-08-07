@@ -21,7 +21,7 @@ public class EmailClient {
 		
 	}
 	
-	public void sendEmail(String recipient) {
+	public void sendEmail(String recipient, String body) {
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -44,9 +44,9 @@ public class EmailClient {
 			message.setFrom(new InternetAddress("svkpartystore.sales@gmail.com"));
 			message.setRecipients(
 			Message.RecipientType.TO, InternetAddress.parse(recipient));
-			message.setSubject("Email Client Test");
+			message.setSubject("Your e-mail receipt from SVK Party Store");
 			 
-			String msg = "This is my first email using JavaMailer";
+			String msg = body;
 			 
 			MimeBodyPart mimeBodyPart = new MimeBodyPart();
 			mimeBodyPart.setContent(msg, "text/html");
@@ -57,7 +57,7 @@ public class EmailClient {
 			message.setContent(multipart);
 			 
 			Transport.send(message);
-			System.out.print("Email Sent!!");
+			System.out.print("You receipt has ben sent.\n\n");
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

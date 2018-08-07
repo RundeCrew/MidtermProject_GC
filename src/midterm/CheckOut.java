@@ -93,24 +93,9 @@ public class CheckOut {
 			Validator.getInt(scnr, "What is your CVV code on the back?", 1, 999);
 			System.out.println("Thanks!");
 		}
-	}
-		
-	public static void provideReceipt (Scanner scnr, String name) {
-		System.out.println(name + ", would you like your receipt printed ('p') or by email ('e')?");
-		String receiptType = scnr.next();
-		if (receiptType.equals("p")) {
-			printReceiptHeader(name);
-		}
-		else {
-			// System.out.println("What is your email address?");
-			String email = Validator.isEmailAddressValid(scnr);	
-			// format document that can be emailed
-			// call email service
-		}
-		
-	}
+	}			
 	
-	private static void printReceiptHeader(String name) {
+	public static void printReceiptHeader(String name) {
 		System.out.println("\t___");
 		System.out.println("\t|   \\     / | /  Party");
 		System.out.println("\t|__  \\   /  |/   Store");
@@ -126,6 +111,59 @@ public class CheckOut {
 
 	
 		}
+	
+	public static String printEmailSummary (List<CartItem> cart, double sum) {
+				
+		double salesTax = 0.0, bottleDeposit = 0.0;				
+		double subTotal = sum;
+		salesTax = subTotal * .06;
+		
+		StringBuilder sb = new StringBuilder();
+		
+		String salesTaxFormat = String.format("%40s", "Sales Tax: ");		
+		String priceFormat = "$" + String.format("%.2f",  salesTax);
+	    String output1Format = String.format("%6s%n", priceFormat);
+	    
+	    sb.append(salesTaxFormat);
+	    sb.append(priceFormat);
+	    sb.append(output1Format);
+	
+	    double sumDep = 0.00;
+		for (CartItem productSold : cart) {
+
+			if (productSold.getProduct().getProductName().equals("Two Hearted Ale")) {
+				bottleDeposit = (.6 * productSold.getQuantity());
+			}
+			else if (productSold.getProduct().getProductName().equals("M43 IPA")) {
+				bottleDeposit = (.6 * productSold.getQuantity());
+			}
+			else if (productSold.getProduct().getProductName().equals("Dales Pale Ale")) {
+				bottleDeposit = (.6 * productSold.getQuantity());
+			}
+			sumDep += bottleDeposit;
+		}
+		
+		String depositFormat = String.format("%40s", "Deposit: ");		
+		priceFormat = "$" + String.format("%.2f",  sumDep);
+	    String output2Format = String.format("%6s%n", priceFormat);
+	    
+	    sb.append(depositFormat);
+	    sb.append(output2Format);	    
+				
+		//System.out.println("\t\t\tDeposit: $" + bottleDeposit);
+		
+		double grandTotal = subTotal + salesTax + sumDep;
+		String grandTotalFormat = String.format("%40s", "Grand Total: ");
+		priceFormat = "$" + String.format("%.2f",  grandTotal);
+	    String output3Format = String.format("%6s%n", priceFormat);
+	    
+	    sb.append(grandTotalFormat);
+	    sb.append(output3Format);	    
+		
+	    String result = sb.toString();
+		return result;
+	}
+	
 //	public static double printReceiptSummary (List<CartItem> cart, double sum) {
 //		
 //		Scanner scnr = new Scanner(System.in);

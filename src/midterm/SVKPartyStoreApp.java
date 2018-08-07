@@ -10,9 +10,6 @@ public class SVKPartyStoreApp {
 
 	public static void main(String[] args) throws ParseException {
 		
-		EmailClient emailClient = new EmailClient();
-		emailClient.sendEmail("mavirginia.cordero@gmail.com");
-		
 		Scanner scnr = new Scanner(System.in);				
 		
 		String cont = "y";
@@ -55,23 +52,19 @@ public class SVKPartyStoreApp {
 		double grandTotal = CheckOut.calcTaxDeposit(cart, sum);
 		
 		CheckOut.getPaymentMethod(scnr, grandTotal);
-		CheckOut.provideReceipt(scnr, userName);
-		printCart(cart);
-//		CheckOut.printReceiptSummary(cart, sum);
+		provideReceipt(scnr, userName, cart, sum);
+		
+		CheckOut.printEmailSummary(cart, sum);
 
-		System.out.println();
-		
-		System.out.println("Thank you for shopping at the SVK Party Store, we appreciate your business.");
-		
-		
+		System.out.println();		
+		System.out.println("Thank you for shopping at the SVK Party Store, we appreciate your business.");				
 	}
 	
 	private static double printCart(ArrayList<CartItem> cart) {
 		
 		int i = 1;
 		double sum = 0;
-		
-		
+				
 		System.out.println(" #" + "  Product\t\t" + "Quantity " + "       Price");
 		System.out.println(" =============================================");
 		
@@ -107,5 +100,24 @@ public class SVKPartyStoreApp {
 		}
 //			String format = "%2d. %-27s $%.2f%n";
 //	        System.out.printf(format, i++, inv.getProductName(), inv.getPrice());
-		}
 	}
+	
+	public static void provideReceipt (Scanner scnr, String name, List<CartItem> cart, double sum) {
+		System.out.println(name + ", would you like your receipt printed ('p') or by email ('e')?");
+		String receiptType = scnr.next();
+		if (receiptType.equals("p")) {
+			CheckOut.printReceiptHeader(name);
+		}
+		else {
+			System.out.println("What is your email address?");
+			String email = Validator.isEmailAddressValid(scnr);	
+						
+			String emailSummary = CheckOut.printEmailSummary(cart, sum);
+			EmailClient emailClient = new EmailClient();
+			
+			System.out.println("Sending email...");
+			System.out.print(emailSummary);
+			emailClient.sendEmail(email, emailSummary);
+		}		
+	}
+}
