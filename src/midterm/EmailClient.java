@@ -48,7 +48,7 @@ public class EmailClient {
 			 
 			String msg = (body + "<html><head>" 
 			+ "<title>SVK Party Store</title>"
-			+ "</head>n"
+			+ "</head>"
 			+ "<body><div><strong>Thanks for shopping with us!</strong></div>"
 			+ "<div><img src=\"https://image.ibb.co/jULvLe/SVK_1.png\"  height=\"120\" width=\"120\"></div>"
 			+ "<div>Subscribe to our mailing list and be the first to find out about our new exclusive items.</em></div>"
